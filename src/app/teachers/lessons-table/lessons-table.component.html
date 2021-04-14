@@ -1,0 +1,73 @@
+<div class="group-form">
+  <mat-form-field>
+    <mat-label>Группа - предмет</mat-label>
+    <mat-select [value]="subjectGroupValue" (valueChange)="subjectGroupValue = $event">
+      <ng-container 
+        *ngFor="let item of subjects" 
+      >
+        <mat-option 
+          *ngFor="let group of item.groups"
+          [value]="item.id + ':' + group.id"
+        >
+          {{group.name}} - {{item.name}}
+        </mat-option>
+      </ng-container>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Кол-во человек</mat-label>
+    <mat-select [(value)]="lesson.subgroup">
+      <mat-option [value]="0">Вся группа</mat-option>
+      <mat-option [value]="1">Первая подгруппа</mat-option>
+      <mat-option [value]="2">Вторая подгруппа</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Кабинет</mat-label>
+    <mat-select [(value)]="lesson.room">
+      <mat-option *ngFor="let item of rooms" [value]="item.id">{{item.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Неделя</mat-label>
+    <mat-select [(value)]="lesson.week">
+      <mat-option [value]="0">Все</mat-option>
+      <mat-option [value]="1">Верхняя</mat-option>
+      <mat-option [value]="2">Нижняя</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label >День недели</mat-label>
+    <mat-select [(value)]="lesson.dayWeek">
+      <mat-option *ngFor="let item of week; let id = index" [value]="id+1">{{item}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Пара</mat-label>
+    <mat-select [(value)]="lesson.pairNum">
+      <mat-option *ngFor="let item of [1,2,3,4,5,6,7]" [value]="item">{{item}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div>
+    <button
+      mat-raised-button
+      [disabled]="!(lesson.pairNum && lesson.dayWeek && lesson.room && lesson.subject) || addingLoading"
+      (click)="add()"
+    >
+      Добавить
+    </button>
+  </div>
+</div>
+<div *ngIf="addingLoading" class="adding-loading">
+  ...Проверка и добавление
+</div>
+<app-cross [cross]="cross"></app-cross>
+<app-table-lessons 
+  (selectLesson)="lesson.dayWeek = $event.dayWeek; lesson.pairNum = $event.pairNum"
+  (deleteLesson)="deleteLesson($event)"
+  view="teacher" 
+  [lessons]="filtredLessons"
+  >
+</app-table-lessons>
+
+

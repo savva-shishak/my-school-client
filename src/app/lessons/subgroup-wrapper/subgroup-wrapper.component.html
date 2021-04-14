@@ -1,0 +1,21 @@
+<app-table-item
+    *ngIf="!somegroups"
+    [lesson]="lessons[0]"
+    [view]="view"
+    (deleteLesson)="deleteLesson.emit((lessons[0] || {}).id)"
+></app-table-item>
+
+<mat-tab-group *ngIf="somegroups" headerPosition="below">
+    <mat-tab
+        *ngFor="let lesson of sort; let index = index; trackBy:indexTrack"
+        [label]="index === 0 ? '1 пг.' : '2 пг.'"
+    >
+        <app-table-item
+            [view]="view"
+            [week]="week"
+            [pair]="pair"
+            [lesson]="lesson"
+            (deleteLesson)="deleteLesson.emit((lesson || {}).id)"
+        ></app-table-item>
+    </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,6 @@
+.group-form {
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr 1fr 1fr 1fr max-content;
+    gap: 10px;
+}
+

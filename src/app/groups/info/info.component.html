@@ -1,0 +1,48 @@
+<div *ngIf="loading" class="flex-center">
+    <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="!loading" class="container">
+    <div class="delete-btn">
+        <button mat-button (click)="delete()" color="warn">Удалить группу</button>
+    </div>
+    <div class="name-form">
+        <mat-form-field>
+            <mat-label>Название группы</mat-label>
+            <input matInput [(ngModel)]="name" >
+        </mat-form-field>
+        <div>
+            <button (click)="update()" mat-stroked-button [disabled]="group.name == name" mat-button>Сохранить</button>
+        </div>
+    </div>
+    <h1 class="flex-left">
+        Предметы
+        <mat-spinner *ngIf="subjectsLoading || subjectsOptionsLoading" [diameter]="25"></mat-spinner>
+    </h1>
+    <div class="name-form">
+      <mat-form-field>
+        <mat-label>Название предмета</mat-label>
+        <mat-select [(value)]="addingSubject">
+          <mat-option *ngFor="let item of subjectsOptions" [value]="item">
+            {{item.name}} ({{item.teacher.name}})
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button (click)="add()" mat-stroked-button [disabled]="!addingSubject" mat-button>Добавить</button>
+      </div>
+    </div>
+    <div class="subjects">
+        <mat-card *ngFor="let subject of group.subjects">
+            <div class="subject-info">
+                <div class="subject-name">{{subject.name}}</div>
+                <div class="subject-teacher">{{subject.teacher.name}}</div>
+            </div>
+            <div class="subject-action">
+                <button (click)="removeSubject(subject.id)" mat-icon-button>
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+        </mat-card>
+    </div>
+    <app-lessons *ngIf="!!group" [subjects]="group.subjects" [entityId]="group.id"></app-lessons>
+</div>

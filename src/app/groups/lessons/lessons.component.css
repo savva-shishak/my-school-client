@@ -1,0 +1,45 @@
+.form {
+  display: grid;
+  grid-template-columns: 2fr 2fr repeat(4, 1fr) max-content;
+  gap: 10px;
+}
+
+.teacher {
+  font-style: italic;
+  color: grey;
+
+  display: inline;
+}
+
+.adding-loading {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cross {
+  margin: 15px 0;
+}
+
+.cross .mat-card-title, .red {
+  color: red;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-column-group {
+  width: 33%;
+}
+
+.mat-column-teacher {
+  width: 33%;
+}
+
+.mat-column-subjects {
+  width: 33%;
+}
+
+.mat-column-room {
+  width: 33%;
+}

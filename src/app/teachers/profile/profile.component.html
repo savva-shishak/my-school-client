@@ -1,0 +1,40 @@
+<div *ngIf="loading" class="flex-center">
+  <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="!loading" class="container">
+  <div class="delete-btn">
+    <button mat-button (click)="delete()" color="warn">Удалить учителя</button>
+  </div>
+  <div class="info">
+    <div class="name">
+      <mat-form-field>
+        <mat-label>ФИО учителя</mat-label>
+        <input matInput [(ngModel)]="teacherName" >
+      </mat-form-field>
+      <button (click)="update()" [disabled]="teacher.name == teacherName" mat-button>Сохранить</button>
+    </div>
+
+    <div class="subjects-form">
+      <mat-form-field>
+        <mat-label>Название предмета</mat-label>
+        <input type="text" matInput [(ngModel)]="subjectName">
+      </mat-form-field>
+      <div>
+        <button (click)="add()" mat-button [disabled]="!subjectName" mat-button>Добавить</button>
+      </div>
+    </div>
+    <div class="subjects">
+        <mat-card *ngFor="let subject of subjects">
+            <div class="subject-info">
+                <div class="subject-name">{{subject.name}}</div>
+            </div>
+            <div class="subject-action">
+                <button (click)="removeSubject(subject.id)" mat-icon-button>
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+        </mat-card>
+    </div>
+  </div>
+  <app-lessons-table [teacherId]="teacher.id" [subjects]="subjects"></app-lessons-table>
+</div>

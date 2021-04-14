@@ -1,0 +1,22 @@
+.wrap-container {
+    border: 0.5px solid rgb(189, 189, 189);
+    height: 140px;
+    padding: 0 10px;
+
+    display: flex;
+    align-items: center;
+
+    max-width: 100%;
+}
+
+.num {
+    padding-right: 5px;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.mat-tab-label {
+    height: 20px !important;
+}

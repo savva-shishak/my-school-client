@@ -1,0 +1,39 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 500px 300px;
+}
+
+.add-form {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-end;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1000px;
+  padding-top: 10px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.flex-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+}
+
+.found {
+  color: grey;
+  font-size: .8em;
+}

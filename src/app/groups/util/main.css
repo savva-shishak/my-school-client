@@ -1,0 +1,23 @@
+.container {
+    margin: 0 auto;
+    max-width: 1300px;
+    padding-top: 10px;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.flex-left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+}

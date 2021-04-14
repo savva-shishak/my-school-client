@@ -1,0 +1,25 @@
+<div class="header">
+  <div class="count">{{lessons.length}} Урока(ов)</div>
+</div>
+<div class="grid-container">
+  <div class="tile" *ngFor="let day of week; let id = index">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{day}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-action-list>
+        <app-week-wrapper
+          *ngFor="let lessons of getDay(id + 1); let lessonId = index; trackBy:indexTrack"
+          (click)="selectLesson.emit({dayWeek: id + 1, pairNum: lessonId + 1})"
+          [week]="id+1"
+          [view]="view" 
+          [num]="lessonId+1" 
+          [lessons]="lessons"
+          (deleteLesson)="deleteLesson.emit($event)"
+        ></app-week-wrapper>
+      </mat-action-list>
+    </mat-card-content>
+  </mat-card>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+.delete-btn {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 0;
+}
+
+.name-form {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.subjects {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.subjects .mat-card {
+    display: grid;
+    grid-template-columns: 1fr 40px;
+    gap: 5px;
+}
+
+.subject-info {
+    width: 100%;
+}
+
+.subject-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+}
+
+.subject-name {
+    font-weight: 600;
+}
+
+.lesson {
+    font-weight: 700;
+}

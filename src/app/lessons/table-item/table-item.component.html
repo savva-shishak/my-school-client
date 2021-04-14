@@ -1,0 +1,46 @@
+<ng-template #Free>
+  <app-free
+    [pair]="pair"
+    [week]="week"
+    [view]="view"
+  ></app-free>
+</ng-template>
+
+<div *ngIf="lesson">
+  
+    <div *ngIf="view === 'group'" class="lesson">
+      <div>
+        <span class="main">
+          {{lesson.subject.name}} ({{lesson.room.name}}) 
+        </span>
+        <div class="sec">{{lesson.subject.teacher.name}}</div>
+      </div>
+      <div>
+        <div [tooltip]="Free" [options]="freeOptions" content-type="template">
+          <mat-icon>bookmark_border</mat-icon>
+        </div>
+        <mat-icon (click)="deleteLesson.emit(lesson.id)">close</mat-icon>
+      </div>
+    </div>
+  
+    <div *ngIf="view === 'teacher'" class="lesson"> 
+      <div>
+        <span class="main">{{lesson.group.name}} ({{lesson.room.name}}) </span>
+        <div class="sec">{{lesson.subject.name}}</div>
+        <div *ngIf="lesson.subGroup === 1" class="sec">1-я подгруппа</div>
+        <div *ngIf="lesson.subGroup === 2" class="sec">2-я подгруппа</div>
+      </div>
+      <mat-icon (click)="deleteLesson.emit(lesson.id)">close</mat-icon>
+    </div>
+
+    <div *ngIf="view === 'room'" class="lesson main">
+      <div>
+        <span class="main">{{lesson.subject.teacher.name}} ({{lesson.group.name}})</span>
+      </div>
+      <mat-icon (click)="deleteLesson.emit(lesson.id)">close</mat-icon>
+    </div>
+  
+</div>
+<div class="window" *ngIf="!lesson">
+  Окно
+</div>
